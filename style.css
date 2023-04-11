@@ -1,22 +1,147 @@
+body {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: 2fr 1fr;
+  margin-top: 3em;
+  font-family: "Courier Prime", monospace;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+main {
+  width: 75%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 1;
+  grid-template-columns: 4fr 1fr;
+}
 .gameItems {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
+  width: 75%;
 }
 
-.gameItems .item {
-  padding: 1em 3em;
-  transition: border linear 100ms, transform linear 100ms;
+.gameItems,
+.gameboard,
+.gameInfo {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 1em;
+
+  margin: 0 auto;
+  box-shadow: 0em 0.5em 0.5em 0em rgba(0, 0, 0, 0.4);
 }
-.gameItems .item:hover {
-  border: 4px solid black;
-  transform: translateY(-1.5em);
-  box-shadow: 0em 1em 1em -0.8em black;
+.gameboard,
+.gameInfo {
+  margin-bottom: 1em;
+}
+
+.gameInfo {
+  margin-left: 2em;
+}
+
+.gameboard header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0em 1em;
+  font-size: 2em;
+}
+
+.gameItems:hover,
+.gameboard:hover,
+.gameInfo:hover,
+.gameOver button:hover {
+  transform: scale(0.99);
+  box-shadow: 0em 0.2em 0.25em 0em rgba(0, 0, 0, 0.4);
+}
+.gameItems img,
+.gameOver button {
+  box-shadow: 0em 0.5em 0.5em 0em;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.gameItems img:hover {
+  transform: scale(0.99);
+  box-shadow: 0em 0.2em 0.25em 0em;
+  color: rgba(0, 0, 0, 0.2);
 }
 .gameItems img {
   width: 6em;
   height: auto;
   margin: 0 auto;
+  /*User should only click on the div*/
+}
+
+.gameItems img.user.machine {
+  color: orange;
+}
+.gameItems img.user {
+  color: limegreen;
+}
+
+.gameItems img.machine {
+  color: lightcoral;
+}
+
+/*GameBoard Info*/
+table {
+  border-collapse: collapse;
+}
+
+table td {
+  text-align: left;
+}
+table td,
+table th {
+  padding: 0.5em;
+}
+
+table span.color {
+  display: block;
+  width: 50%;
+  height: 1em;
+  margin: 0 auto;
+  border-radius: 10%;
+}
+
+table span.color.limeGreen {
+  background-color: limegreen;
+}
+table span.color.lightCoral {
+  background-color: lightcoral;
+}
+table span.color.orange {
+  background-color: orange;
+}
+
+/*GameOver Section*/
+.gameOver {
+  visibility: hidden;
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+  justify-content: space-around;
+  margin: 0 auto;
+  margin-top: 1em;
+  transform: visibility linear 1s;
+}
+
+.gameOver button {
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 1rem;
+  padding: 1em 2em;
+}
+.gameOver button:hover {
+  cursor: pointer;
+}
+
+/*GameOver class to img*/
+img.gameOverImg {
+  pointer-events: none;
+  box-shadow: none;
 }

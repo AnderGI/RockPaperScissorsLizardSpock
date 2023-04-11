@@ -5,31 +5,71 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RPSLS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <section>
-      <h1>Header</h1>
-    </section>
+    <main>
+      <section class="gameboard">
+        <header>
+          <p>You : <span class="scoreText">0</span></p>
+          <p>Machine : <span class="scoreText">0</span></p>
+        </header>
+        <main>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores
+            minima molestiae ea sed culpa impedit omnis consectetur deserunt
+            beatae adipisci?
+          </p>
+        </main>
+      </section>
+      <section class="gameInfo">
+        <table
+          summary="Summary of the colors displayed for user, machine and when both of the have the same"
+        >
+          <thead>
+            <tr>
+              <th>Color</th>
+              <th>Situation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="color limeGreen"></span></td>
+              <td>User</td>
+            </tr>
+            <tr>
+              <td><span class="color lightCoral"></span></td>
+              <td>Machine</td>
+            </tr>
+            <tr>
+              <td><span class="color orange"></span></td>
+              <td>Both</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
     <section class="gameItems">
-      <div class="item">
-        <img src="./images/rock-svgrepo-com.svg" alt="Rock Image" />
-      </div>
-      <div class="item">
-        <img src="./images/stationery-svgrepo-com.svg" alt="Paper Image" />
-      </div>
-      <div class="item">
-        <img src="./images/lizard-svgrepo-com.svg" alt="Lizard Image" />
-      </div>
-      <div class="item">
-        <img
-          src="./images/spock-hand-gesture-svgrepo-com.svg"
-          alt="Spock Image"
-        />
-      </div>
-      <div class="item">
-        <img src="./images/scissors-svgrepo-com.svg" alt="Scissors Image" />
-      </div>
+      <img src="./images/rock-svgrepo-com.svg" alt="Rock Image" />
+
+      <img src="./images/stationery-svgrepo-com.svg" alt="Paper Image" />
+      <img src="./images/lizard-svgrepo-com.svg" alt="Lizard Image" />
+      <img
+        src="./images/spock-hand-gesture-svgrepo-com.svg"
+        alt="Spock Image"
+      />
+      <img src="./images/scissors-svgrepo-com.svg" alt="Scissors Image" />
     </section>
+    <section class="gameOver">
+      <p></p>
+      <button type="button" id="restartBtn">Restart</button>
+    </section>
+    <script src="script.js"></script>
   </body>
 </html>
