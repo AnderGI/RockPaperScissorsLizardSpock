@@ -26,6 +26,31 @@ const scissors = {
   canDefeat: ["lizard", "paper"],
 };
 
+//Information Message Object
+//"user.item.name, machine.item.name" : "message"
+const informationMessageObj = {
+  "spock, scissors": "Spock smashes scissors",
+  "scissors, spock": "Spock smashes scissors",
+  "spock, rock": "Spock vaporizes rock",
+  "rock, spock": "Spock vaporizes rock",
+  "lizard, spock": "Lizard poisons spock",
+  "spock, lizard": "Lizard poisons spock",
+  "lizard, paper": "Lizard eats paper",
+  "paper, lizard": "Lizard eats paper",
+  "rock, lizard": "Rock crushes lizard",
+  "lizard, rock": "Rock crushes lizard",
+  "rock, scissors": "Rock crushes scissors",
+  "scissors, rock": "Rock crushes scissors",
+  "paper, rock": "Paper covers rock",
+  "rock, paper": "Paper covers rock",
+  "paper, spock": "Paper disproves spock",
+  "spock, paper": "Paper disproves spock",
+  "scissors, paper": "Scissors cuts paper",
+  "paper, scissors": "Scissors cuts paper",
+  "scissors, lizard": "Scissors decapitates lizard",
+  "lizard, scissors": "Scissors decapitates lizard",
+};
+
 //We will connect the map elements with the indexes of the NodeList .gameItems
 gameItemsMap.set(0, rock);
 gameItemsMap.set(1, paper);
@@ -51,6 +76,7 @@ const scoreTextEl = [...document.querySelectorAll("span.scoreText")]; //first el
 const gameOverEl = document.querySelector(".gameOver");
 const restartBtn = document.getElementById("restartBtn");
 const gameOverParagraphEl = document.querySelector(".gameOver>p");
+const informationParagraphEl = document.querySelector(".gameboard main>p");
 //FUNCTIONS
 /**
  *
@@ -91,6 +117,13 @@ const setMachineItem = () => {
 
 const changeTurn = () => {
   userTurn = !userTurn;
+};
+
+const setInformationMessage = (userObj, machineObj) => {
+  informationParagraphEl.textContent =
+    userObj.item.name === machineObj.item.name
+      ? "Draw"
+      : informationMessageObj[`${userObj.item.name}, ${machineObj.item.name}`];
 };
 
 /**
@@ -158,6 +191,8 @@ const handleClick = (e) => {
   setUserItem(indexOfElement);
   //setItem for the machine
   setMachineItem();
+  //display information message
+  setInformationMessage(user, machine);
   //add a point to either the user or machine by comparing the items
   addPoint();
   //check for a winner. If no winner userTurn = true; else gameOver = true
@@ -175,6 +210,7 @@ const restart = () => {
   gameOverEl.style.visibility = "hidden";
   user.points = 0;
   machine.points = 0;
+  informationParagraphEl.textContent = "Who wins?";
   scoreTextEl.forEach((el) => (el.textContent = 0));
   gameItems.forEach((img) => (img.classList = ""));
 };
